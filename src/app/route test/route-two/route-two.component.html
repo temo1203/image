@@ -1,0 +1,161 @@
+<h1>You were navigated to {{ Name }}</h1>
+<div class="w-full max-w-xs">
+  <form
+    [formGroup]="form"
+    class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md"
+  >
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700"> Name </label>
+      <input
+        formControlName="name"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        id="username"
+        type="text"
+        placeholder="Name"
+      />
+      <div
+        *ngIf="fc.name.touched && fc.name.invalid"
+        class="flex items-center justify-center w-full h-16 text-red-900 bg-red-400 rounded-md"
+      >
+        <div *ngIf="fc.name.errors?.required">The name is required</div>
+      </div>
+    </div>
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700">
+        Username
+      </label>
+      <input
+        formControlName="username"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        id="username"
+        type="text"
+        placeholder="Username"
+      />
+      <div
+        *ngIf="fc.username.touched && fc.username.invalid"
+        class="flex items-center justify-center w-full h-16 text-red-900 bg-red-400 rounded-md"
+      >
+        <div *ngIf="fc.username.errors?.required">The username is required</div>
+        <div *ngIf="fc.username.errors?.minlength">
+          The username must be at least 5 characters
+        </div>
+        <div *ngIf="fc.username.errors?.noSpaceVal">
+          The username must not have space
+        </div>
+        <div *ngIf="fc.username.errors?.firstLetterCapitalized">
+          The username must have first letter capitalized
+        </div>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label class="block mb-2 text-sm font-bold text-gray-700">
+        Password
+      </label>
+      <input
+        formControlName="password"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        id="password"
+        type="password"
+        placeholder="******************"
+      />
+      <div
+        *ngIf="fc.password.touched && fc.password.invalid"
+        class="flex items-center justify-center w-full h-16 text-red-500 bg-red-300 rounded-md"
+      >
+        <div *ngIf="fc.password.errors?.required">The password is required</div>
+        <div *ngIf="fc.password.errors?.minlength">
+          The password must be at least 8 characters
+        </div>
+      </div>
+    </div>
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
+        Blog
+      </label>
+      <input
+        formControlName="textarea"
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        id="username"
+        type="text"
+        placeholder="Blog"
+      />
+      <div
+        *ngIf="fc.textarea.touched && fc.textarea.invalid"
+        class="flex items-center justify-center w-full h-16 text-red-900 bg-red-500 rounded-md"
+      >
+        <div *ngIf="fc.textarea.errors?.required">
+          The blog textarea is required
+        </div>
+        <div *ngIf="fc.textarea.errors?.minlength">
+          The blog must be at least 15 characters
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-between">
+      <button
+        [disabled]="form.invalid"
+        (click)="Submit()"
+        class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        Add New
+      </button>
+      <a
+        class="inline-block text-sm font-bold text-blue-500 align-baseline hover:text-blue-800"
+        href="#"
+      >
+        Forgot Password?
+      </a>
+    </div>
+  </form>
+</div>
+<input
+  (keyup.enter)="search($event)"
+  class="h-8 pl-5 my-6 text-blue-500 border-2 border-blue-600 rounded-lg ml-7 w-52"
+  type="text"
+/>
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">name</th>
+        <th scope="col" class="px-6 py-3">username</th>
+        <th scope="col" class="px-6 py-3">password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let value of allSites | async"
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ value.name }}
+          <button
+            [queryParams]="{
+              password: value.password,
+              blog: value.textarea,
+              name: value.name
+            }"
+            routerLink="/test"
+            class="text-green-500 rounded-md bg-slate-500 w-30"
+          >
+            Show full
+          </button>
+          <button
+            class="ml-5 text-center text-green-500 bg-red-600 rounded-md w-30 h-7"
+            (click)="del(value.id)"
+          >
+            Delete
+          </button>
+        </th>
+        <td class="px-6 py-4">{{ value.username }}</td>
+        <td class="px-6 py-4">{{ value.password }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

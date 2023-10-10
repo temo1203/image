@@ -1,0 +1,10 @@
+<div>
+  <div class="grid grid-cols-3 gap-8">
+    <p *ngFor="let value of allSites | async">
+      <img [src]="value.img" />
+      <button mat-raised-button color="warn" (click)="del(value.id)">
+        Delete
+      </button>
+    </p>
+  </div>
+</div>

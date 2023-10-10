@@ -1,0 +1,26 @@
+<p>{{ receivedName }}</p>
+<video
+  class="absolute w-[50%] left-[26%] top-[22%]"
+  width="320"
+  height="240"
+  autoplay
+  (error)="onVideoError($event)"
+  controls
+>
+  <source [src]="url" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+<div class="flex flex-col justify-start gap-8 mt-10">
+  <button
+    class="w-32 p-3 font-sans font-bold text-center text-blue-800 bg-yellow-800 border-2 border-black"
+    *ngFor="let value of receivedFilms | keyvalue"
+    (click)="FilmsAdder(value.value)"
+  >
+    {{ value.key }}
+  </button>
+</div>
+<a
+  class="text-xl text-violet-500 hover:text-blue-700 hover:transition-all"
+  routerLink="/film"
+  >Go back</a
+>

@@ -1,0 +1,18 @@
+<div class="container p-10 m-auto">
+  <div class="grid grid-cols-3 gap-12">
+    <div
+      routerLink="/film-lite"
+      *ngFor="let value of filmData"
+      [queryParams]="{
+        name: value.name,
+        films: value.series | json
+      }"
+      class="flex flex-col items-center justify-center bg-black cursor-pointer text-violet-700 h-60"
+    >
+      <h1>{{ value.name }}</h1>
+      <p class="text-center">
+        {{ value.text }}
+      </p>
+    </div>
+  </div>
+</div>

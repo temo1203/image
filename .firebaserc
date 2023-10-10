@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-12950": {
+      "hosting": {
+        "firebase-angular-tester": [
+          "test-12950"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-12950"
+  }
+}

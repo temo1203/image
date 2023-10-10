@@ -1,0 +1,9 @@
+<input
+  class="pl-4 border-2 border-blue-600"
+  (keyup.enter)="clicker(value.value)"
+  #value
+  type="text"
+/>
+<a class="text-violet-700" routerLink="/two" (click)="clicker(value.value)">
+  Navigate
+</a>
