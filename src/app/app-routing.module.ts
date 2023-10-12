@@ -4,16 +4,16 @@ import { RouteOneComponent } from './route test/route-one/route-one.component';
 import { RouteTwoComponent } from './route test/route-two/route-two.component';
 import { HomeComponent } from './home/home.component';
 import { TestComponent } from './route test/test/test.component';
+import { NavigationMaterialComponent } from './material/navigation-material/navigation-material.component';
+import { TreeMaterialComponent } from './material/tree-material/tree-material.component';
+import { ImagesComponent } from './images/images.component';
+import { ImgRetriveComponent } from './img-retrive/img-retrive.component';
 import { FilmComponent } from './film section/film/film.component';
 import { FilmLiteComponent } from './film section/film-lite/film-lite.component';
 import { MaterialComponent } from './material/material.component';
 import { FormComponent } from './material/form/form.component';
-import { NavigationMaterialComponent } from './material/navigation-material/navigation-material.component';
-import { TreeMaterialComponent } from './material/tree-material/tree-material.component';
 import { DragDropMaterialComponent } from './material/drag-drop-material/drag-drop-material.component';
 import { DashboardMaterialComponent } from './material/dashboard-material/dashboard-material.component';
-import { ImagesComponent } from './images/images.component';
-import { ImgRetriveComponent } from './img-retrive/img-retrive.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'retriever', component: ImgRetriveComponent },
